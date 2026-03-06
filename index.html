@@ -1,21 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Weather App</title>
+    <title>Weather Forecasts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="jpg" href="logo.png">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Weather App</h1>
-
-        <input type="text" id="locationInput" placeholder="Enter city name">
-        <button onclick="getWeatherByCity()">Search</button>
-        <button onclick="getWeatherByLocation()">Use My Location</button>
-
-        <div id="weatherResult" class="weather-box"></div>
+    <!-- HOME SCREEN -->
+    <div class="home-screen" id="homeScreen">
+        <div class="logo">
+            <img src="images/logo.png" alt="Weather Logo">
+        </div>
+         
+        <h1>Weather</h1>
+        <h2>Forecasts</h2>
+        <button class="start-btn" onclick="startApp()">Let's Start</button>
     </div>
 
+    <!-- WEATHER SCREEN -->
+    
+    <div class="weather-screen" id="weatherScreen">
+
+    <nav class="navbar">
+    <div class="nav-container">
+
+        <div class="logo-area">
+            <h2>Weather Forecasts</h2>
+        </div>
+
+        <div class="search-area">
+            <button class="location-btn" onclick="getCurrentLocationWeather()">
+                 <svg xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2"
+                    stroke-linecap="round" 
+                    stroke-linejoin="round">
+                    <path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/>
+                    <circle cx="12" cy="9" r="2.5"/>
+                  </svg>
+            </button>
+
+            <input 
+                type="text" 
+                id="searchInput"
+                placeholder="Search City or Post Code"
+            >
+
+            <button class="search-btn" onclick="searchWeather()">
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                   viewBox="0 0 24 24" 
+                   fill="none" 
+                   stroke="currentColor" 
+                   stroke-width="2"
+                   stroke-linecap="round" 
+                   stroke-linejoin="round">
+                   <circle cx="11" cy="11" r="8"/>
+                   <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+            </button>
+        </div>
+
+    </div>
+    </nav>
+
+    <!-- MAIN WEATHER CARD -->
+    <div class="weather-card">
+
+        <div class="location-date">
+
+            <div class="city-flag">
+               <span id="cityName">City</span>
+               <img id="countryFlag" width="30">
+            </div>
+
+            <span id="currentDate"></span>
+
+        </div>
+
+
+        <i id="weatherIcon" class="fa-solid fa-cloud"></i>
+
+        <h1 id="temperature">--°C</h1>
+        <p id="description">Weather condition</p>
+        <p class="minmax">
+            Max: <span id="maxTemp">--</span>°  
+            Min: <span id="minTemp">--</span>°
+        </p>
+        
+        <p id="airQuality">Air Quality: --</p>
+
+        <!-- Hourly Forecast -->
+        <div class="hourly" id="hourlyForecast">
+          
+        </div>
+        
+        <div class="forecast-container">
+            <h3>5 Day Forecast</h3>
+            <div id="fiveDayForecast" class="forecast-cards"></div>
+        </div>
+    </div>
+
+    </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
