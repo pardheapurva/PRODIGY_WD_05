@@ -4,7 +4,7 @@ Weather Forecast Web App
 A modern and responsive Weather Forecast Web Application that provides real-time weather information for any city in the world. The application detects the user's current location automatically and displays the latest weather conditions along with hourly and 5-day forecasts.
 
 # Live Demo
-https://pardheapurva.github.io/PRODIGY_WD_05/
+https://prodigy-wd-05-one-dun.vercel.app/
 
 # Features
  1. Current Location Detection using browser geolocation
