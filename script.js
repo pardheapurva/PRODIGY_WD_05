@@ -1,4 +1,4 @@
-const apiKey = "API_KEY";
+const apiKey = config.WEATHER_API_KEY;
 
 const weatherIcons = {
     "01d": "fa-solid fa-sun",
