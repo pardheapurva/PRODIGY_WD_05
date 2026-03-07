@@ -1,4 +1,4 @@
-const apiKey = "e1309682cfe060a058d900fe1bc07a22";
+const apiKey = "API_KEY";
 
 const weatherIcons = {
     "01d": "fa-solid fa-sun",
