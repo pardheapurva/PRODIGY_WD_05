@@ -1,5 +1,3 @@
-const apiKey = config.WEATHER_API_KEY;
-
 const weatherIcons = {
     "01d": "fa-solid fa-sun",
     "01n": "fa-solid fa-moon",
@@ -43,11 +41,11 @@ function searchWeather() {
 
     if (isPincode) {
     // Assume India for 6-digit pincodes
-    geoUrl = `https://api.openweathermap.org/geo/1.0/zip?zip=${searchInput},IN&appid=${apiKey}`;
+    geoUrl = `/api/proxy?endpoint=geo/1.0/zip&zip=${searchInput}`;
 
     } else {
     // City search worldwide
-    geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${searchInput}&limit=1&appid=${apiKey}`;
+    geoUrl = `/api/proxy?endpoint=geo/1.0/direct&q=${searchInput}&limit=1`;
     }
 
     fetch(geoUrl)
@@ -71,7 +69,7 @@ function searchWeather() {
                 preciseLocationName = geoData[0].name;
             }
 
-            return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
+            return fetch(`/api/proxy?endpoint=data/2.5/forecast&lat=${lat}&lon=${lon}&units=metric`)
                 .then(res => res.json())
                 .then(weatherData => {
 
@@ -102,7 +100,7 @@ function getCurrentLocationWeather() {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
 
-        fetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${apiKey}`)
+        fetch(`/api/proxy?endpoint=geo/1.0/reverse&lat=${lat}&lon=${lon}&limit=1`)
             .then(res => res.json())
             .then(geoData => {
 
@@ -112,7 +110,7 @@ function getCurrentLocationWeather() {
                     preciseLocationName = geoData[0].name;
                 }
 
-                return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
+                return fetch(`/api/proxy?endpoint=data/2.5/forecast&lat=${lat}&lon=${lon}&units=metric`)
                     .then(res => res.json())
                     .then(weatherData => {
 
@@ -211,7 +209,7 @@ container.appendChild(div);
 
 function getAirQuality(lat, lon) {
 
-    fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`)
+    fetch(`/api/proxy?endpoint=data/2.5/air_pollution&lat=${lat}&lon=${lon}`)
     .then(res => res.json())
     .then(aqiData => {
 
